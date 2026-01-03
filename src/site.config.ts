@@ -7,7 +7,7 @@ const config: SiteConfig = {
   title: 'angelozuffiano.com',
   // The description of your site, used for SEO and RSS feed.
   description:
-    'A coder-ready Astro blog theme with 59 of your favorite color schemes to choose from',
+    'Personal blog by Angelo Zuffianò sharing insights on Artificial Intelligence, Deep Learning, Technology, and Programming.',
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'Angelo Zuffianò',
   // Keywords for SEO, used in the meta tags.
@@ -166,10 +166,10 @@ const config: SiteConfig = {
   // IMPORTANT: Update giscus.json in the root of the project with your own website URL
   // If you don't want to use Giscus, set this to undefined.
   giscus: {
-    repo: 'stelcodes/multiterm-astro',
-    repoId: 'R_kgDOPNnBig',
-    category: 'Giscus',
-    categoryId: 'DIC_kwDOPNnBis4CteOc',
+    repo: 'agaz1985/angelozuffiano',
+    repoId: 'R_kgDOQzEsmw',
+    category: 'General',
+    categoryId: 'DIC_kwDOQzEsm84C0ijq',
     reactionsEnabled: true, // Enable reactions on post itself
   },
   // These are characters available for the character chat feature.
