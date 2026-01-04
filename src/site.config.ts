@@ -37,6 +37,10 @@ const config: SiteConfig = {
       url: '/about',
     },
     {
+      name: 'Projects',
+      url: '/projects',
+    },
+    {
       name: 'Archive',
       url: '/posts',
     },
