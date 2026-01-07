@@ -44,4 +44,4 @@ Always up for chatting AI, healthcare hacks, indie building, or why Italian bure
 
 ---
 
-*This site is my playground for AI rants, experiments, and occasional wins. Thanks for dropping by! 😄*
+_This site is my playground for AI rants, experiments, and occasional wins. Thanks for dropping by! 😄_
