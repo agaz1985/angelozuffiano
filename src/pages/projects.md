@@ -16,7 +16,7 @@ Here are some of the projects I've built or contributed to, ranging from AI expe
 
 aDale.ink was a platform designed to create unique, illustrated stories for kids using generative AI. It allowed users to personalize characters, themes, and plot points—perfect for bedtime stories or unique gifts.
 
-> *Status: Archived. This project was an exploration into micro-SaaS that provided valuable lessons in product-market fit.*
+> _Status: Archived. This project was an exploration into micro-SaaS that provided valuable lessons in product-market fit._
 
 ---
 
@@ -30,8 +30,8 @@ aDale.ink was a platform designed to create unique, illustrated stories for kids
 
 Hirflow helps you get paid faster by tracking invoices and sending polite, automated reminders to clients. It streamlines the accounts receivable process so you can focus on your work instead of chasing payments.
 
-* **Key Feature:** Set-and-forget email sequences.
-* **Tech Stack:** React, Node.js, Stripe integration.
+- **Key Feature:** Set-and-forget email sequences.
+- **Tech Stack:** React, Node.js, Stripe integration.
 
 ---
 
@@ -59,5 +59,4 @@ Umberto is a tool that detects problematic inheritance patterns in Python codeba
 
 ---
 
-*Want to know more or collaborate? Reach out on [GitHub](https://github.com/agaz1985) or [LinkedIn](https://www.linkedin.com/in/angantzuff/)!*
-
+_Want to know more or collaborate? Reach out on [GitHub](https://github.com/agaz1985) or [LinkedIn](https://www.linkedin.com/in/angantzuff/)!_
