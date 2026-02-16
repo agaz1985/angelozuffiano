@@ -13,7 +13,7 @@ import Giscus from "@components/Giscus.astro";
 
 
 // This calculates reading time from the raw content
-const stats = readingTime(Astro.props.rawContent ?? "");
+const stats = readingTime(Astro.props.body ?? "");
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
