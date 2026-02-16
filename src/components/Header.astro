@@ -1,87 +1,51 @@
 ---
-import siteConfig from '~/site.config'
-import LightDarkAutoButton from '~/components/LightDarkAutoButton.astro'
-import Search from '~/components/Search.astro'
-import SelectTheme from '~/components/SelectTheme.astro'
-import NavLink from '~/components/NavLink.astro'
-
-const lightDarkAutoTheme = siteConfig.themes.mode === 'light-dark-auto'
-const selectTheme =
-  siteConfig.themes.mode === 'select' && siteConfig.themes.include.length > 1
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { SITE } from "@consts";
 ---
 
-<header>
-  <div class="relative flex items-center justify-between bg-accent/10 rounded-xl">
-    <a
-      id="logo"
-      href="/"
-      class="block px-4 py-1.5 max-w-full no-underline items-center bg-accent text-background font-bold rounded-xl"
-    >
-      {siteConfig.title}
-    </a>
-    <div class="flex items-center gap-3 sm:mr-3">
-      <Search trailingSlashes={siteConfig.trailingSlashes} />
-      {lightDarkAutoTheme && <LightDarkAutoButton />}
-      {selectTheme && <SelectTheme />}
-      <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
+<header transition:persist>
+  <Container>
+    <div class="flex flex-wrap justify-between gap-y-2">
+      <Link href="/" underline={false}>
+        <div class="flex items-center font-semibold gap-2">
+          <img src="/logo.jpg" alt="Angelo Zuffiano Logo" class="h-8 w-8 rounded-full" style="object-fit:cover;" />
+          <span>angelozuffiano.com</span>
+        </div>
+      </Link>
+      <nav class="flex items-center gap-1 text-sm">
+        <Link href="/blog">blog</Link>
+        <span>
+          {`/`}
+        </span>
+        <Link href="/projects">projects</Link>
+        <span>
+          {`/`}
+        </span>
+        <Link href="/about">about</Link>
+        <span>
+          {`/`}
+        </span>
         <button
-          id="nav-mobile-button"
-          class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
-          type="button"
-          aria-expanded="false"
-          aria-controls="nav-menu-list"
+          id="magnifying-glass"
+          aria-label="Search"
+          class="flex items-center rounded-sm border border-black/15 bg-neutral-100 px-2 py-1 text-xs transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:bg-neutral-900 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
         >
-          ▾
+          <svg
+            height="16"
+            stroke-linejoin="round"
+            viewBox="0 0 16 16"
+            width="16"
+            style="color: currentcolor;"
+            ><path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 7.88461 10.1718 8.69256 9.63058 9.30876L9.30876 9.63058C8.69256 10.1718 7.88461 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7ZM9.96544 11.0261C9.13578 11.6382 8.11014 12 7 12C4.23858 12 2 9.76142 2 7C2 4.23858 4.23858 2 7 2C9.76142 2 12 4.23858 12 7C12 8.11014 11.6382 9.13578 11.0261 9.96544L14.0303 12.9697L14.5607 13.5L13.5 14.5607L12.9697 14.0303L9.96544 11.0261Z"
+              fill="currentColor"></path></svg
+          >
+          &nbsp;Search
         </button>
-        <ul
-          id="nav-mobile-list"
-          class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
-        >
-          {
-            siteConfig.navLinks.map((link) => (
-              <li class="p-1" aria-expanded="false">
-                <NavLink link={link} />
-              </li>
-            ))
-          }
-        </ul>
       </nav>
     </div>
-  </div>
-  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
-    <ul class="flex flex-row text-accent">
-      {
-        siteConfig.navLinks.map((link) => (
-          <li class="mr-5" aria-expanded="true">
-            <NavLink link={link} />
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+  </Container>
 </header>
-
-<script>
-  const navMobileButton = document.getElementById('nav-mobile-button')
-  const navMobileList = document.getElementById('nav-mobile-list')
-  const navMobileListItems = navMobileList?.querySelectorAll('li')
-  const toggleNavMobileMenu = (action: 'on' | 'off' | 'toggle') => {
-    let isNowOpen: boolean = false
-    if (action === 'on') {
-      isNowOpen = true
-      navMobileList?.classList.remove('invisible')
-    } else if (action === 'off') {
-      isNowOpen = false
-      navMobileList?.classList.add('invisible')
-    } else {
-      isNowOpen = !navMobileList?.classList.toggle('invisible')
-    }
-    navMobileButton?.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
-    navMobileListItems?.forEach((listItem) => {
-      listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
-    })
-  }
-  navMobileButton?.addEventListener('click', (_ev) => {
-    toggleNavMobileMenu('toggle')
-  })
-</script>
