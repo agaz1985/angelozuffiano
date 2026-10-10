@@ -11,29 +11,19 @@
     Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-neutral-200, currentColor);
   }
-}
 
-@layer utilities {
   html {
-    overflow-y: auto;
     color-scheme: light;
     scroll-padding-top: 100px;
+    -webkit-text-size-adjust: 100%;
   }
 
   html.dark {
@@ -42,56 +32,137 @@
 
   html,
   body {
-    @apply size-full;
+    @apply h-full;
   }
 
   body {
-    @apply font-sans antialiased;
     @apply flex flex-col;
-    @apply bg-neutral-100 dark:bg-neutral-900;
-    @apply text-black/75 dark:text-white/75;
+    @apply bg-white font-sans text-neutral-800 antialiased;
+    @apply dark:bg-neutral-950 dark:text-neutral-200;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    text-rendering: optimizeLegibility;
   }
 
-  header {
-    @apply fixed left-0 right-0 top-0 z-50 py-6;
-    @apply bg-neutral-100/75 dark:bg-neutral-900/75;
-    @apply saturate-200 backdrop-blur-xs;
+  /* A real focus ring. The theme previously relied on colour changes alone,
+     which are invisible to many users. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-neutral-900;
+    @apply dark:outline-neutral-100;
   }
 
-  main {
-    @apply flex-1 py-32;
-  }
-
-  footer {
-    @apply py-6 text-sm;
-  }
-
-  article {
-    @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-    @apply prose-headings:font-semibold;
-    @apply prose-headings:text-black dark:prose-headings:text-white;
+  ::selection {
+    @apply bg-neutral-900/10 dark:bg-neutral-100/15;
   }
 }
 
 @layer utilities {
-  article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-black/30 dark:decoration-white/30;
-    @apply transition-colors duration-300 ease-in-out;
+  /* Scoped to the site chrome: a bare `header {}` selector would also capture
+     in-content <header> elements. */
+  .site-header {
+    @apply fixed left-0 right-0 top-0 z-50 py-5;
+    @apply bg-white/80 dark:bg-neutral-950/80;
+    @apply saturate-150 backdrop-blur-md;
   }
-  article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/50 dark:decoration-white/50;
+
+  main {
+    @apply flex-1 py-28;
+  }
+
+  .site-footer {
+    @apply py-6 text-sm;
   }
 }
 
+/* ---------------------------------------------------------------- prose */
+
+@layer utilities {
+  article {
+    @apply prose prose-neutral max-w-full dark:prose-invert;
+    @apply prose-headings:font-semibold prose-headings:tracking-tight;
+    @apply prose-headings:text-neutral-900 dark:prose-headings:text-white;
+    @apply prose-h2:mt-14 prose-h2:mb-4 prose-h2:text-2xl;
+    @apply prose-h3:mt-10 prose-h3:mb-3 prose-h3:text-xl;
+    @apply prose-p:my-5 prose-p:leading-[1.75];
+    @apply prose-strong:text-neutral-900 dark:prose-strong:text-white;
+    @apply prose-blockquote:border-l-2 prose-blockquote:font-normal;
+    @apply prose-li:my-1.5;
+    @apply prose-img:rounded-md prose-img:mx-auto prose-img:my-auto;
+  }
+
+  /* Reading measure: ~66-70 characters regardless of the container width. */
+  article > p,
+  article > ul,
+  article > ol,
+  article > blockquote,
+  article > figure {
+    @apply max-w-[68ch];
+  }
+
+  article a {
+    @apply decoration-neutral-400 underline underline-offset-[3px];
+    @apply transition-colors duration-150 ease-out;
+    @apply dark:decoration-neutral-600;
+  }
+
+  article a:hover {
+    @apply text-neutral-900 decoration-neutral-900;
+    @apply dark:text-white dark:decoration-white;
+  }
+
+  /* Anchor links appended to post headings. The link itself carries an
+     aria-label, so it must stay visually empty — the "#" is pure decoration. */
+  article .heading-anchor {
+    @apply ml-1.5 text-neutral-300 no-underline;
+    @apply dark:text-neutral-700;
+  }
+
+  article .heading-anchor::before {
+    content: "#";
+  }
+
+  article h2:hover .heading-anchor,
+  article h3:hover .heading-anchor,
+  article h4:hover .heading-anchor,
+  article .heading-anchor:focus-visible {
+    @apply text-neutral-500 dark:text-neutral-400;
+  }
+
+  article video {
+    @apply mx-auto my-8 w-full rounded-md;
+    @apply border border-neutral-200/70 dark:border-neutral-800;
+  }
+
+  article figure figcaption,
+  article figcaption {
+    @apply mx-auto max-w-[68ch] text-center text-sm text-neutral-500;
+    @apply dark:text-neutral-400;
+  }
+}
+
+/* ------------------------------------------------------------- motion */
+
 .animate {
-  @apply -translate-y-3 opacity-0;
+  @apply translate-y-2 opacity-0;
   @apply transition-all duration-300 ease-out;
 }
 
 .animate.show {
   @apply translate-y-0 opacity-100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate {
+    @apply translate-y-0 opacity-100;
+  }
 }
 
 html #back-to-top {
@@ -102,9 +173,10 @@ html.scrolled #back-to-top {
   @apply pointer-events-auto opacity-100;
 }
 
-/* shiki config */
+/* ------------------------------------------------------------- shiki */
+
 pre {
-  @apply border border-black/15 py-5 dark:border-white/20;
+  @apply border border-neutral-200 py-5 dark:border-neutral-800;
 }
 
 :root {
@@ -137,13 +209,8 @@ pre {
 
 /* copy code button on codeblocks */
 .copy-code {
-  @apply absolute right-3 top-3 grid size-9 place-content-center rounded-sm border border-black/15 bg-neutral-100 text-center duration-300 ease-in-out dark:border-white/20 dark:bg-neutral-900;
-}
-
-.copy-code:hover {
-  @apply bg-[#E9E9E9] transition-colors dark:bg-[#232323];
-}
-
-.copy-code:active {
-  @apply scale-90 transition-transform;
+  @apply absolute right-3 top-3 grid size-9 place-content-center rounded-sm border border-neutral-200 bg-white text-center text-neutral-600 duration-150 ease-out;
+  @apply hover:bg-neutral-100 hover:text-neutral-900;
+  @apply dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white;
+  @apply active:scale-90;
 }

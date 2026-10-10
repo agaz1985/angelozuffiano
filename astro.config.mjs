@@ -10,7 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-micro.vercel.app",
+  site: "https://angelozuffiano.com",
   integrations: [sitemap(), mdx(), pagefind()],
   vite: {
     plugins: [tailwindcss()],
@@ -20,9 +20,18 @@ export default defineConfig({
     rehypePlugins: [
       rehypeKatex,
       rehypeSlug,
-      rehypeAutolinkHeadings,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "append",
+          properties: {
+            className: "heading-anchor",
+            "aria-label": "Link to this section",
+            "data-pagefind-ignore": "true",
+          },
+        },
+      ],
     ],
-    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       theme: "css-variables",
     },

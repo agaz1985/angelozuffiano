@@ -1,6 +1,6 @@
 ---
 title: "The Physics of a Coffee ☕️"
-description: ""
+description: "A simplified moka pot physics model"
 date: "2026-02-16"
 tags:
   - coffee
@@ -10,7 +10,7 @@ tags:
 
 ## A 90-Year-Old Device
 
-![Alfonso Bialetti](/blog/moka_physics/alfonso_bialetti.avif)
+![Alfonso Bialetti](./images/alfonso_bialetti.avif)
 <p align="center"><em>Alfonso Bialetti, inventor of the Moka Express (1933)</em></p>
 
 When in 1933 <a href="https://en.wikipedia.org/wiki/Alfonso_Bialetti" target="_blank" rel="noopener noreferrer">Alfonso Bialetti</a> invented the moka pot, reportedly inspired by watching his wife use a primitive laundry machine, he could not have imagined that he was designing one of the most iconic and recognizable coffee devices in history. The famous <a href="https://en.wikipedia.org/wiki/Moka_pot" target="_blank" rel="noopener noreferrer">Moka Express</a>, produced by <a href="https://en.wikipedia.org/wiki/Bialetti" target="_blank" rel="noopener noreferrer">Bialetti</a>, has since sold more than 300 million units worldwide, bringing style, ritual, and joy to the breakfast tables of millions.
@@ -31,12 +31,16 @@ That is how this post was born. If you are thrilled to discover the surprisingly
 
 The moka pot's design is deceptively simple. It is a metal device made of two screwable parts: a bottom chamber and a collecting chamber at the top. Between them sits the coffee basket, which holds the ground coffee on top of a built-in filter. The bottom chamber holds water, the coffee basket holds the ground coffee, and the collecting chamber eventually receives the brewed coffee.
 
-![Moka pot design and components](/blog/moka_physics/moka_design.png)
+![Moka pot design and components](./images/moka_design.png)
 <p align="center"><em>The three main components of the moka pot: bottom chamber, coffee basket, and collecting chamber</em></p>
 
 Its working principle is elegant and intuitive. The water in the bottom chamber is heated by an external heat source, typically a stove. As the water warms, it starts to generate steam, increasing the pressure inside the bottom chamber. This pressure forces the water upward through the coffee basket, passing through the ground coffee and filter, rising up the vertical spout, and finally reaching the collecting chamber where the aromatic coffee awaits.
 
-![How the moka pot works](/blog/moka_physics/moka_animation.gif)
+<video loop muted playsinline preload="none" data-lazy-video poster="/blog/moka_physics/moka_animation-poster.webp" width="1280" height="864" class="not-prose rounded-sm">
+  <source src="/blog/moka_physics/moka_animation.av1.mp4" type="video/mp4; codecs=av01.0.05M.08" />
+  <source src="/blog/moka_physics/moka_animation.webm" type="video/webm" />
+  <source src="/blog/moka_physics/moka_animation.h264.mp4" type="video/mp4" />
+</video>
 <p align="center"><em>Animated cross-section showing the full brewing cycle from heat input to coffee collection</em></p>
 
 Two subtle points make this process possible:
@@ -54,7 +58,7 @@ The moka pot is not just a simple brewer. It is a miniature thermodynamic labora
 
 ### 1. Heat Transfer
 
-![Heat Transfer](/blog/moka_physics/step1.png)
+![Heat Transfer](./images/step1.png)
 <p align="center"><em>Heat flowing from the stove into the metal body and water, with losses to the surrounding air</em></p>
 
 The water in the bottom chamber heats up from the metal walls of the pot, absorbing energy at a rate:
@@ -83,7 +87,7 @@ These two heat flows compete: one warms the water, the other dissipates energy i
 
 ### 2. Pressure and Boiling
 
-![Pressure and Boiling](/blog/moka_physics/step2.png)
+![Pressure and Boiling](./images/step2.png)
 <p align="center"><em>Steam accumulating in the sealed bottom chamber, raising pressure above atmospheric</em></p>
 
 As the water warms, its temperature approaches the boiling point at the local chamber pressure, approximated by a <a href="https://en.wikipedia.org/wiki/Clausius%E2%80%93Clapeyron_relation" target="_blank" rel="noopener noreferrer">Clausius-Clapeyron scaling</a>:
@@ -112,7 +116,7 @@ As steam mass increases, pressure rises, and the system enters a feedback loop: 
 
 ### 3. Fluid Dynamics
 
-![Fluid Dynamics](/blog/moka_physics/step3.png)
+![Fluid Dynamics](./images/step3.png)
 <p align="center"><em>Pressurized water being forced through the coffee bed, acting as a porous flow resistor</em></p>
 
 This pressure is what drives water through the coffee bed. The coffee grounds act as a porous medium, resisting flow and creating a two-stage process. Once the bed is fully saturated, flow begins according to a pressure-driven power law inspired by <a href="https://en.wikipedia.org/wiki/Darcy%27s_law" target="_blank" rel="noopener noreferrer">Darcy's law for porous flow</a>:
@@ -143,7 +147,7 @@ The first term represents a heat-limited boiling rate; the second a pressure-lim
 
 ### 4. The Final Brew
 
-![The Final Brew](/blog/moka_physics/step4.png)
+![The Final Brew](./images/step4.png)
 <p align="center"><em>Hot coffee rising through the spout and mixing with the liquid already collected in the top chamber</em></p>
 
 As hot water passes through the grounds and reaches the top chamber, it mixes thermally with the coffee already collected, governed by <a href="https://en.wikipedia.org/wiki/Conservation_of_energy" target="_blank" rel="noopener noreferrer">conservation of thermal energy</a>:
@@ -163,7 +167,11 @@ Through this elegant interplay of heat transfer, gas expansion, phase change, an
 
 ## The Simulation Engine
 
-![Simulator](/blog/moka_physics/simulator.gif)
+<video loop muted playsinline preload="none" data-lazy-video poster="/blog/moka_physics/simulator-poster.webp" width="1280" height="744" class="not-prose rounded-sm">
+  <source src="/blog/moka_physics/simulator.av1.mp4" type="video/mp4; codecs=av01.0.05M.08" />
+  <source src="/blog/moka_physics/simulator.webm" type="video/webm" />
+  <source src="/blog/moka_physics/simulator.h264.mp4" type="video/mp4" />
+</video>
 <p align="center"><em>The interactive moka pot simulator, showing real-time pressure curves, flow rates, and extraction dynamics</em></p>
 
 The equations above are, of course, a simplification of reality. A real moka pot involves turbulent two-phase flow, microscopic interactions, complex geometry, and material imperfections. But the model is physically grounded enough to capture the essential dynamics: heat transfer, pressure build-up, phase change, and porous flow, with surprising fidelity.

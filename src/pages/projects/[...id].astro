@@ -3,10 +3,9 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime } from "@lib/utils";
+import { readingTime, hasMath } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
-import TableOfContents from "@components/TableOfContents.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -20,10 +19,16 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
-const { Content, headings } = await render(project);
+const { Content } = await render(project);
+const hasMathInProject = hasMath(project.body);
 ---
 
-<Layout title={project.data.title} description={project.data.description}>
+<Layout
+  title={project.data.title}
+  description={project.data.description}
+  image={project.data.image}
+  math={hasMathInProject}
+>
   <Container>
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>

@@ -1,41 +1,41 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
-import { SITE } from "@consts";
 ---
 
-<header transition:persist>
+<header class="site-header" transition:persist>
   <Container>
-    <div class="flex flex-wrap justify-between gap-y-2">
+    <div class="flex flex-wrap items-center justify-between gap-y-2">
       <Link href="/" underline={false}>
-        <div class="flex items-center font-semibold gap-2">
-          <img src="/logo.jpg" alt="Angelo Zuffiano Logo" class="h-8 w-8 rounded-full" style="object-fit:cover;" />
+        <div class="flex items-center gap-2 font-semibold text-neutral-900 dark:text-white">
+          <img
+            src="/logo.jpg"
+            alt=""
+            class="h-8 w-8 rounded-full"
+            width="32"
+            height="32"
+          />
           <span>angelozuffiano.com</span>
         </div>
       </Link>
-      <nav class="flex items-center gap-1 text-sm">
+      <nav class="flex items-center gap-1 text-sm" aria-label="Main">
         <Link href="/blog">blog</Link>
-        <span>
-          {`/`}
-        </span>
+        <span aria-hidden="true" class="text-neutral-300 dark:text-neutral-700">/</span>
         <Link href="/projects">projects</Link>
-        <span>
-          {`/`}
-        </span>
+        <span aria-hidden="true" class="text-neutral-300 dark:text-neutral-700">/</span>
         <Link href="/about">about</Link>
-        <span>
-          {`/`}
-        </span>
+        <span aria-hidden="true" class="text-neutral-300 dark:text-neutral-700">/</span>
         <button
           id="magnifying-glass"
           aria-label="Search"
-          class="flex items-center rounded-sm border border-black/15 bg-neutral-100 px-2 py-1 text-xs transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:bg-neutral-900 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+          class="flex items-center rounded-sm border border-neutral-200 px-2 py-1 text-xs transition-colors duration-150 ease-out hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:text-white dark:focus-visible:bg-neutral-800 dark:focus-visible:text-white"
         >
           <svg
             height="16"
             stroke-linejoin="round"
             viewBox="0 0 16 16"
             width="16"
+            aria-hidden="true"
             style="color: currentcolor;"
             ><path
               fill-rule="evenodd"

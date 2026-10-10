@@ -16,7 +16,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
           tags.map((tag) => (
             <a
               href={`/tags/${tag}`}
-              class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+              class="rounded-sm border border-neutral-300/60 px-2 py-1 text-sm transition-colors duration-150 ease-out hover:bg-neutral-100 hover:text-black focus-visible:bg-neutral-100 focus-visible:text-black dark:border-neutral-700/60 dark:hover:bg-neutral-800/60 dark:hover:text-white dark:focus-visible:bg-neutral-800/60 dark:focus-visible:text-white"
             >
               {tag}{" "}
               <span class="text-sm text-gray-600">

@@ -1,16 +1,14 @@
 ---
-
 import readingTime from "reading-time";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime as readingTimeUtil } from "@lib/utils";
+import { hasMath } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import Giscus from "@components/Giscus.astro";
-
 
 // This calculates reading time from the raw content
 const stats = readingTime(Astro.props.body ?? "");
@@ -57,7 +55,12 @@ const post = Astro.props;
 const { Content, headings } = await render(post);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  math={hasMath(post.body)}
+>
   <Container>
     <div class="animate">
       <BackToPrevious href="/blog">Back to blog</BackToPrevious>
@@ -80,7 +83,7 @@ const { Content, headings } = await render(post);
             {post.data.tags.map((tag) => (
               <a
                 href={`/tags/${tag}`}
-                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+                class="rounded-sm border border-neutral-300/60 px-2 py-1 text-sm transition-colors duration-150 ease-out hover:bg-neutral-100 hover:text-black focus-visible:bg-neutral-100 focus-visible:text-black dark:border-neutral-700/60 dark:hover:bg-neutral-800/60 dark:hover:text-white dark:focus-visible:bg-neutral-800/60 dark:focus-visible:text-white"
               >
                 {tag}
               </a>

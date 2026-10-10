@@ -8,20 +8,19 @@ import { SITE } from "@consts";
 type Props = {
   title: string;
   description: string;
+  image?: string;
+  math?: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, image, math = false } = Astro.props;
+
+const fullTitle = title === "Home" || !title ? SITE.TITLE : `${title} | ${SITE.TITLE}`;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
-    <!-- KaTeX CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
-    />
+    <Head title={fullTitle} description={description} image={image} math={math} />
   </head>
   <body>
     <noscript>

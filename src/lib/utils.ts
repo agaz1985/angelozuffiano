@@ -19,3 +19,16 @@ export function readingTime(html: string) {
   const readingTimeMinutes = (wordCount / 200 + 1).toFixed();
   return `${readingTimeMinutes} min read`;
 }
+
+const MATH_PATTERN =
+  /\$\$[\s\S]+?\$\$|\\\((?:[^)]|\\\))*?\\\)|\\\[[\s\S]*?\\\]|\$\S(?:[^$\n]{0,300}?\S)?\$/;
+
+/**
+ * Detects whether a markdown body contains math, so the (heavy) KaTeX
+ * stylesheet can be loaded only on the pages that actually need it.
+ */
+export function hasMath(markdown: string | undefined) {
+  if (!markdown) return false;
+  return MATH_PATTERN.test(markdown);
+}
+
