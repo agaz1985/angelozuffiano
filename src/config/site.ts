@@ -16,16 +16,8 @@ export const siteConfig = {
   about:
     "Senior machine learning researcher writing about AI for medical imaging, physics-based simulations, and building things in public.",
   /**
-   * Both forms ship disabled until a real provider endpoint is pasted in.
+   * The contact form ships disabled until a real provider endpoint is pasted in.
    */
-  newsletter: {
-    enabled: false,
-    action: "",
-    method: "post",
-    emailFieldName: "email",
-    title: "Get new posts by email",
-    description: "One email when something new goes up. No spam, unsubscribe anytime.",
-  },
   contact: {
     enabled: false,
     action: "",
