@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="A pen launches off a desk, bounces, and rolls under a cabinet">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f2937"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="360" fill="#ffffff"/>
+  <rect x="1.5" y="1.5" width="717" height="357" fill="none" stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <line x1="40" y1="318" x2="700" y2="318" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="40" y1="330" x2="700" y2="330" stroke="#d1d5db" stroke-width="1"/>
+
+  <rect x="70" y="150" width="150" height="12" fill="#d1d5db" stroke="#9ca3af" stroke-width="1"/>
+  <rect x="80" y="162" width="10" height="156" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
+  <rect x="200" y="162" width="10" height="156" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
+  <text x="145" y="128" font-family="system-ui,sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">desk</text>
+
+  <circle cx="222" cy="143" r="5" fill="#1f2937"/>
+  <line x1="228" y1="143" x2="272" y2="143" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="250" y="133" font-family="system-ui,sans-serif" font-size="13" fill="#2563eb" text-anchor="middle">v_x</text>
+
+  <line x1="300" y1="235" x2="300" y2="285" stroke="#6b7280" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="310" y="263" font-family="system-ui,sans-serif" font-size="13" fill="#6b7280">g</text>
+
+  <path d="M222 145 C 252 230, 292 300, 332 318" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="5 4"/>
+  <path d="M332 318 C 352 300, 376 304, 402 318" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <line x1="402" y1="318" x2="545" y2="318" stroke="#2563eb" stroke-width="2" stroke-dasharray="2 3"/>
+  <text x="345" y="188" font-family="system-ui,sans-serif" font-size="13" fill="#2563eb">projectile + bounce</text>
+
+  <rect x="470" y="115" width="170" height="175" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="482" y="290" width="14" height="28" fill="#d1d5db" stroke="#9ca3af" stroke-width="1"/>
+  <rect x="616" y="290" width="14" height="28" fill="#d1d5db" stroke="#9ca3af" stroke-width="1"/>
+  <line x1="555" y1="115" x2="555" y2="290" stroke="#d1d5db" stroke-width="1"/>
+  <circle cx="550" cy="202" r="3" fill="#9ca3af"/>
+  <text x="555" y="100" font-family="system-ui,sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">cabinet</text>
+
+  <g stroke="#9ca3af" stroke-width="2">
+    <line x1="216" y1="308" x2="228" y2="320"/>
+    <line x1="228" y1="308" x2="216" y2="320"/>
+  </g>
+  <text x="222" y="344" font-family="system-ui,sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">where you think it is</text>
+
+  <circle cx="548" cy="314" r="6" fill="#dc2626"/>
+  <line x1="430" y1="230" x2="540" y2="312" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arr-red)"/>
+  <text x="405" y="222" font-family="system-ui,sans-serif" font-size="12.5" fill="#dc2626" text-anchor="middle">where it actually is</text>
+</svg>

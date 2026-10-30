@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="A ball bouncing with decreasing rebound heights, showing the coefficient of restitution">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f2937"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="300" fill="#ffffff"/>
+  <rect x="1.5" y="1.5" width="717" height="297" fill="none" stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <text x="360" y="32" font-family="system-ui,sans-serif" font-size="15" fill="#1f2937" text-anchor="middle">e = −v&#8242;/v&#160;&#160;&#160;&#160;h&#8242; = e&#178;·h</text>
+
+  <line x1="60" y1="260" x2="700" y2="260" stroke="#9ca3af" stroke-width="2"/>
+
+  <line x1="120" y1="70" x2="120" y2="260" stroke="#6b7280" stroke-width="1.2"/>
+  <line x1="114" y1="70" x2="126" y2="70" stroke="#6b7280" stroke-width="1.2"/>
+  <line x1="114" y1="260" x2="126" y2="260" stroke="#6b7280" stroke-width="1.2"/>
+  <text x="120" y="55" font-family="system-ui,sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">drop height h</text>
+
+  <line x1="330" y1="165" x2="330" y2="260" stroke="#6b7280" stroke-width="1.2"/>
+  <line x1="324" y1="165" x2="336" y2="165" stroke="#6b7280" stroke-width="1.2"/>
+  <line x1="324" y1="260" x2="336" y2="260" stroke="#6b7280" stroke-width="1.2"/>
+  <text x="330" y="150" font-family="system-ui,sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">rebound e&#178;h</text>
+
+  <line x1="170" y1="70" x2="170" y2="260" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <circle cx="170" cy="70" r="9" fill="#2563eb"/>
+  <line x1="185" y1="95" x2="185" y2="235" stroke="#1f2937" stroke-width="2" marker-end="url(#arr2)"/>
+  <text x="193" y="168" font-family="system-ui,sans-serif" font-size="13" fill="#1f2937">v</text>
+
+  <path d="M170 260 Q 210 205 280 165" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <circle cx="280" cy="165" r="9" fill="#2563eb"/>
+  <line x1="262" y1="248" x2="262" y2="192" stroke="#1f2937" stroke-width="2" marker-end="url(#arr2)"/>
+  <text x="248" y="225" font-family="system-ui,sans-serif" font-size="13" fill="#1f2937">e·v</text>
+
+  <text x="170" y="288" font-family="system-ui,sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">impact</text>
+  <text x="60" y="292" font-family="system-ui,sans-serif" font-size="12" fill="#9ca3af">floor</text>
+</svg>
