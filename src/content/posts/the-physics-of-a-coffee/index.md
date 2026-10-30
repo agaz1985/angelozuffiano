@@ -63,12 +63,14 @@ The moka pot is not just a simple brewer. It is a miniature thermodynamic labora
 
 The water in the bottom chamber heats up from the metal walls of the pot, absorbing energy at a rate:
 
-$$Q_{metal \to water} = k_{mw} (T_{metal} - T_{water})$$
-
+$$
+Q_{metal \to water} = k_{mw} (T_{metal} - T_{water})
+$$
 while simultaneously losing a small amount of heat to the surroundings:
 
-$$Q_{loss} = k_{loss} (T_{metal} - T_{room})$$
-
+$$
+Q_{loss} = k_{loss} (T_{metal} - T_{room})
+$$
 These equations represent the lumped form of <a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling" target="_blank" rel="noopener noreferrer">Newton's Law of Cooling</a>, where heat flow is proportional to a temperature difference.
 
 | Variable | Description |
@@ -92,14 +94,17 @@ These two heat flows compete: one warms the water, the other dissipates energy i
 
 As the water warms, its temperature approaches the boiling point at the local chamber pressure, approximated by a <a href="https://en.wikipedia.org/wiki/Clausius%E2%80%93Clapeyron_relation" target="_blank" rel="noopener noreferrer">Clausius-Clapeyron scaling</a>:
 
-$$T_{boil} \approx 373.15\,\text{K} \left( \frac{P_{chamber}}{P_{atm}} \right)^{0.12}$$
-
+$$
+T_{boil} \approx 373.15\,\text{K} \left( \frac{P_{chamber}}{P_{atm}} \right)^{0.12}
+$$
 Because pressure rises inside the sealed base, water boils above 100 °C. The chamber pressure itself is determined by the <a href="https://en.wikipedia.org/wiki/Ideal_gas_law" target="_blank" rel="noopener noreferrer">ideal gas law</a> applied to the steam:
 
-$$P_{steam} = \frac{m_{steam} R T_{water}}{V_{steam}}$$
-
-$$P_{chamber} = \max(P_{steam},\; P_{atm})$$
-
+$$
+P_{steam} = \frac{m_{steam} R T_{water}}{V_{steam}}
+$$
+$$
+P_{chamber} = \max(P_{steam},\; P_{atm})
+$$
 | Variable | Description |
 |---|---|
 | $T_{boil}$ | Boiling temperature at chamber pressure (K) |
@@ -121,8 +126,9 @@ As steam mass increases, pressure rises, and the system enters a feedback loop: 
 
 This pressure is what drives water through the coffee bed. The coffee grounds act as a porous medium, resisting flow and creating a two-stage process. Once the bed is fully saturated, flow begins according to a pressure-driven power law inspired by <a href="https://en.wikipedia.org/wiki/Darcy%27s_law" target="_blank" rel="noopener noreferrer">Darcy's law for porous flow</a>:
 
-$$\dot{m}_{flow} = k_{bed} \;(\Delta P)^n \qquad \text{where} \quad \Delta P = P_{chamber} - P_{atm}$$
-
+$$
+\dot{m}_{flow} = k_{bed} \;(\Delta P)^n \qquad \text{where} \quad \Delta P = P_{chamber} - P_{atm}
+$$
 | Variable | Description |
 |---|---|
 | $\dot{m}_{flow}$ | Mass flow rate of liquid coffee (kg/s) |
@@ -132,8 +138,9 @@ $$\dot{m}_{flow} = k_{bed} \;(\Delta P)^n \qquad \text{where} \quad \Delta P = P
 
 Meanwhile, phase change from water to steam is limited by the available heat:
 
-$$\dot{m}_{steam} = \min\!\left( \frac{0.8\; Q_{metal \to water}}{L_v},\; k_{boil}(P_{sat} - P_{steam}) \right)$$
-
+$$
+\dot{m}_{steam} = \min\!\left( \frac{0.8\; Q_{metal \to water}}{L_v},\; k_{boil}(P_{sat} - P_{steam}) \right)
+$$
 | Variable | Description |
 |---|---|
 | $\dot{m}_{steam}$ | Steam mass generation rate (kg/s) |
@@ -152,8 +159,9 @@ The first term represents a heat-limited boiling rate; the second a pressure-lim
 
 As hot water passes through the grounds and reaches the top chamber, it mixes thermally with the coffee already collected, governed by <a href="https://en.wikipedia.org/wiki/Conservation_of_energy" target="_blank" rel="noopener noreferrer">conservation of thermal energy</a>:
 
-$$T_{coffee,new} = \frac{ m_{coffee}\; T_{coffee} + dm_{new}\; T_{water} }{ m_{coffee} + dm_{new} }$$
-
+$$
+T_{coffee,new} = \frac{ m_{coffee}\; T_{coffee} + dm_{new}\; T_{water} }{ m_{coffee} + dm_{new} }
+$$
 | Variable | Description |
 |---|---|
 | $m_{coffee}$ | Existing brewed coffee mass (kg) |
