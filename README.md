@@ -1,11 +1,24 @@
-# Introducing [Astro Micro 🔬](https://astro-micro.vercel.app/)
+# angelozuffiano.com
 
-Astro Micro is an accessible theme for Astro. It's a fork of [Mark Horn's](https://github.com/markhorn-dev) popular theme [Astro Nano](https://astro-nano-demo.vercel.app/). Like Nano, Micro comes with zero frameworks installed.
+Personal site of [Angelo Zuffianò](https://angelozuffiano.com), a senior machine learning researcher working on AI for medical imaging, computer vision, and generative AI.
 
-Micro adds features like [Pagefind](https://pagefind.app) for search, [Giscus](https://giscus.app) for comments, and more. For a full list of changes, see this [blog post](https://astro-micro.vercel.app/blog/00-micro-changelog).
+Built with [Astro](https://astro.build) on the [Monograph](https://github.com/xocothemes/monograph) theme (text-first blog theme by Andrei Alba, MIT licensed).
 
-Micro still comes with everything great about Nano — full type safety, a sitemap, an RSS feed, and Markdown + MDX support. Styled with TailwindCSS and preconfigured with system, light, and dark themes.
+## Development
 
----
+```sh
+npm install
+npm run dev
+```
 
-![astro-micro](https://github.com/user-attachments/assets/fc9b55b9-53e5-4933-9d23-936e1c61e6c2)
+Build and preview production output:
+
+```sh
+npm run build
+npm run preview
+```
+
+## Content
+
+Posts live in `src/content/posts/<slug>/index.md` (Markdown, with KaTeX math enabled).
+Site settings, navigation, and socials live in `src/config/site.ts`; categories in `src/config/categories.ts`.

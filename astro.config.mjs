@@ -1,39 +1,37 @@
+// @ts-check
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx";
-import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
+import { unified } from "@astrojs/markdown-remark";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
+import { siteConfig } from "./src/config/site.ts";
+import { codeThemes, codeDefaultColor } from "./src/config/code.ts";
 
-// https://astro.build/config
+import mdx from "@astrojs/mdx";
+
+const shikiConfig = /** @type {const} */ ({
+  themes: codeThemes,
+  defaultColor: codeDefaultColor,
+});
+
 export default defineConfig({
-  site: "https://angelozuffiano.com",
-  integrations: [sitemap(), mdx(), pagefind()],
+  site: siteConfig.siteUrl,
+  integrations: [
+    sitemap({
+      filter: (page) => page !== new URL("/search/", siteConfig.siteUrl).toString(),
+    }),
+    mdx(),
+  ],
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeSlug, rehypeKatex],
+    }),
+    shikiConfig,
+  },
   vite: {
     plugins: [tailwindcss()],
-  },
-  markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [
-      rehypeKatex,
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "append",
-          properties: {
-            className: "heading-anchor",
-            "aria-label": "Link to this section",
-            "data-pagefind-ignore": "true",
-          },
-        },
-      ],
-    ],
-    shikiConfig: {
-      theme: "css-variables",
-    },
   },
 });

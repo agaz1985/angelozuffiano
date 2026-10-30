@@ -1,108 +1,64 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
+import { getCollection } from "astro:content";
+import SiteFooter from "@/components/SiteFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteConfig } from "@/config/site";
+import { authorSlug, getAllAuthors, visiblePosts } from "@/lib/posts";
+
+const allPosts = visiblePosts(await getCollection("posts"));
+const authors = getAllAuthors(allPosts);
 ---
 
-<Layout title="About Me" description="About Angelo Zuffiano, Senior Machine Learning Researcher and AI enthusiast.">
-  <Container>
-    <div data-pagefind-ignore>
-      <div class="space-y-10">
-        <div class="space-y-3">
-          <h1 class="font-semibold text-black dark:text-white">
-            About Me
-          </h1>
-          <div class="space-y-4">
-            <p>
-              Hey there! 👋 I'm Angelo, a Senior Machine Learning Researcher who spends his days teaching computers to look at teeth.
-            </p>
-          </div>
-        </div>
+<BaseLayout
+  title="About"
+  description={`About ${siteConfig.name} — what it publishes and who writes it.`}
+>
+  <SiteHeader posts={allPosts} />
+  <main id="content" class="outer">
+    <div class="canvas">
+      <header class="pagehead">
+        <p class="eyebrow">About</p>
+        <h1 class="pagehead-title">{siteConfig.name}</h1>
+        <p class="pagehead-description">{siteConfig.about}</p>
+      </header>
 
-        <section class="animate space-y-3">
-          <h2 class="font-semibold text-black dark:text-white">
-            What I Do (Mostly)
-          </h2>
-          <div class="space-y-2">
-            <p>Building AI for 3D dental imaging, and, previously, radiology diagnostics</p>
-            <p>PyTorch/TensorFlow wizardry on computer vision and generative stuff</p>
-            <p>Co-authored patents in AI for dentistry</p>
-          </div>
-        </section>
+      <div class="prose">
+        <h2>What I do</h2>
+        <p>
+          I'm Angelo, a senior machine learning researcher who spends his days teaching computers to
+          look at teeth. I build AI for 3D dental imaging and, previously, radiology diagnostics, and
+          I've co-authored patents in AI for dentistry.
+        </p>
 
-        <section class="animate space-y-3">
-          <h2 class="font-semibold text-black dark:text-white">
-            Current Obsession
-          </h2>
-          <div class="space-y-2">
-            <p>
-              Messing with LLMs, multimodal AI, and whatever shiny new tool can make science (or side projects) go faster.
-            </p>
-          </div>
-        </section>
+        <h2>What gets published here</h2>
+        <p>
+          Deep dives into physics-based simulations, machine learning models, and honest reflections
+          about building in public.
+        </p>
 
-        <section class="animate space-y-3">
-          <h2 class="font-semibold text-black dark:text-white">
-            Beyond the Code
-          </h2>
-          <div class="space-y-2">
-            <p>When not staring at models training:</p>
-            <p>📚 Reading AI papers</p>
-            <p>🔧 Building silly side projects: aDale.ink (AI personalized kids' books), Hirflow (nagging people about unpaid invoices), and random C code on old PCs (RetroLM)</p>
-            <p>🎯 Wondering if AI will save the world or just make better cat videos</p>
-          </div>
-        </section>
+        <h2>Current obsession</h2>
+        <p>LLMs, multimodal AI, and whatever new tool can make science or side projects go faster.</p>
 
-        <section class="animate space-y-3">
-          <h2 class="font-semibold text-black dark:text-white">
-            Philosophy
-          </h2>
-          <div class="space-y-2">
-            <p class="italic">
-              AI is at its best when it empowers people to achieve great things
-            </p>
-          </div>
-        </section>
+        <h2>Beyond the code</h2>
+        <ul>
+          <li>Reading AI papers</li>
+          <li>Building side projects: aDale.ink, Hirflow, and RetroLM</li>
+          <li>Wondering if AI will save the world or just make better cat videos</li>
+        </ul>
 
-        <section class="animate space-y-3">
-          <h2 class="font-semibold text-black dark:text-white">
-            Let's Connect
-          </h2>
-          <div class="space-y-2">
-            <p>
-              Always up for chatting AI, healthcare hacks, and indie building.
-            </p>
-            <div class="space-y-1 pt-2">
-              <p>
-                <Link href="https://github.com/agaz1985" external>
-                  GitHub: @agaz1985
-                </Link>
-              </p>
-              <p>
-                <Link href="https://www.linkedin.com/in/angantzuff" external>
-                  LinkedIn: /in/angantzuff
-                </Link>
-              </p>
-              <p>
-                <Link href="https://twitter.com/angzuff" external>
-                  X (Twitter): @angzuff
-                </Link>
-              </p>
-              <p>
-                <Link href="https://medium.com/@angelo_zuffiano" external>
-                  Medium: @angelo_zuffiano
-                </Link>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="animate space-y-2">
-          <p class="text-sm">
-            This site is my playground for AI rants, experiments, and occasional wins. Thanks for dropping by! 😄
-          </p>
-        </section>
+        <h2>Who writes it</h2>
+        <ul>
+          {
+            authors.map((author) => (
+              <li>
+                <a href={`/author/${authorSlug(author.name)}/`}>{author.name}</a> — {author.role} ({author.posts.length} {author.posts.length === 1 ? "post" : "posts"})
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
-  </Container>
-</Layout>
+  </main>
+  <SiteFooter />
+</BaseLayout>
