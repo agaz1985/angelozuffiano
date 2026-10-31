@@ -1,6 +1,6 @@
 # angelozuffiano.com
 
-Personal site of [Angelo Zuffianò](https://angelozuffiano.com), a senior machine learning researcher working on AI for medical imaging, computer vision, and generative AI.
+Personal site of [Angelo Zuffianò](https://angelozuffiano.com).
 
 Built with [Astro](https://astro.build) on the [Monograph](https://github.com/xocothemes/monograph) theme (text-first blog theme by Andrei Alba, MIT licensed).
 
