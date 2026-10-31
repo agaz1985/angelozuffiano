@@ -9,6 +9,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Callout from "@/components/mdx/Callout.astro";
 import CodeGroup from "@/components/mdx/CodeGroup.astro";
 import CodeGroupItem from "@/components/mdx/CodeGroupItem.astro";
+import Comments from "@/components/Comments.astro";
 import { siteConfig } from "@/config/site";
 import {
   authorSlug,
@@ -193,6 +194,8 @@ const structuredData = {
         </footer>
       )}
     </article>
+
+    <Comments />
 
     {related.length > 0 && (
       <section class="canvas mt-[var(--space-section)]" aria-labelledby="keep-reading">

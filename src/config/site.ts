@@ -25,6 +25,17 @@ export const siteConfig = {
     method: "post",
     responseTime: "Replies usually go out within two business days.",
   },
+  /**
+   * Giscus comment threads, backed by GitHub Discussions. The source repo must
+   * stay PUBLIC for giscus to work (readers need to read the Discussions it
+   * writes to), and the `giscus` GitHub App must be installed on the repo.
+   */
+  comments: {
+    repo: "agaz1985/angelozuffiano",
+    repoId: "R_kgDOQzEsmw",
+    category: "General",
+    categoryId: "DIC_kwDOQzEsm84C0ijq",
+  },
   socials: [] as SocialLink[],
 };
 
